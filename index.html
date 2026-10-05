@@ -180,11 +180,23 @@
   <section class="clients">
     <div class="container">
       <div class="section-head center">
-        <h2 style="color:var(--gold);text-align:center;">Trusted By</h2>
+        <h2 style="color:var(--gold);text-align:center;">Brands</h2>
       </div>
     </div>
     <div class="logo-marquee">
       <div class="logo-track" id="logoTrack"></div>
+    </div>
+  </section>
+
+  <!-- INFLUENCERS -->
+  <section class="clients" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head center">
+        <h2 style="color:var(--gold);text-align:center;">Influencers</h2>
+      </div>
+    </div>
+    <div class="logo-marquee">
+      <div class="logo-track" id="influencerTrack"></div>
     </div>
   </section>
 
@@ -226,6 +238,38 @@
         return html;
       }
       // Duplicate the set so the scroll loop is seamless.
+      track.innerHTML = renderSet() + renderSet();
+    })();
+
+    (function(){
+      var influencers = [
+        { photo: 'influencer-djblackchennai.jpg', name: 'DJ Black Chennai', handle: '@djblackchennai' },
+        { photo: 'influencer-actorabhishek.jpg', name: 'Abishek Shakar', handle: '@actorabhishekoffcial' },
+        { photo: 'influencer-kaavyaarivumani.jpg', name: 'Kaavya Arivumani', handle: '@kaavyaarivumanioffl' },
+        { photo: 'influencer-anjana-rangan.jpg', name: 'Anjana Rangan', handle: '@anjana_rangan' },
+        { photo: 'influencer-aarthishalini.jpg', name: 'Aarthi Shalini', handle: '@shaalini_official' },
+        { photo: 'influencer-cricanandha.jpg', name: 'Cricanandha', handle: '@cricanandha' },
+        { photo: 'influencer-thamizhmullaikd.jpg', name: 'Thamizh Mullai', handle: '@thamizhmullaikd' },
+        { photo: 'influencer-praveenraj.jpg', name: 'Praveenraj Ganesan', handle: '@praveenrajtamildude' },
+        { photo: 'influencer-townbusvijay.jpg', name: 'Townbus Vijay', handle: '@townbus_vijay' },
+        { photo: 'influencer-vjchitti.jpg', name: 'VJ Chitti', handle: '@vj_chitti' },
+      ];
+
+      var track = document.getElementById('influencerTrack');
+      if (!track) return;
+
+      function renderSet(){
+        var html = '';
+        influencers.forEach(function(p){
+          var handleClean = p.handle.replace('@','');
+          html += '<a href="https://www.instagram.com/' + handleClean + '/" target="_blank" rel="noopener" class="influencer-card">' +
+            '<img src="' + p.photo + '" alt="' + p.name + '" class="influencer-photo" loading="lazy">' +
+            '<div class="influencer-name">' + p.name + '</div>' +
+            '<div class="influencer-handle">' + p.handle + '</div>' +
+          '</a>';
+        });
+        return html;
+      }
       track.innerHTML = renderSet() + renderSet();
     })();
   </script>
@@ -275,7 +319,7 @@
     </div>
     <div class="footer-col">
       <h4>Contact Us</h4>
-      <a href="https://maps.google.com/maps?q=7%2F1%20Poonguyil%20Nagar%201st%20Street%2C%20VVG%20Nagar%2C%20Vengamedu%2C%20Karur%2C%20Tamilnadu%20639006" target="_blank" rel="noopener" class="footer-contact-item">
+      <a href="https://maps.app.goo.gl/qeGs287bhWjd76no8" target="_blank" rel="noopener" class="footer-contact-item">
         <svg class="fc-icon" viewBox="0 0 384 512" width="14" height="14" fill="currentColor"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67a24.005 24.005 0 0 1-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
         <span>7/1 Poonguyil Nagar 1st Street, VVG Nagar, Vengamedu, Karur, Tamilnadu 639006</span>
       </a>
