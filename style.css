@@ -193,15 +193,15 @@ section{padding:100px 0;}
 }
 .service-card:hover .service-photo{transform:scale(1.05);}
 @media (min-width:901px){
-  .services-grid .service-card:nth-child(5):last-child{
+  .services-grid .service-card:first-child{
     grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;
   }
-  .services-grid .service-card:nth-child(5):last-child .service-photo{height:100%;aspect-ratio:auto;min-height:280px;}
-  .services-grid .service-card:nth-child(5):last-child .service-body{
+  .services-grid .service-card:first-child .service-photo{height:100%;aspect-ratio:auto;min-height:280px;}
+  .services-grid .service-card:first-child .service-body{
     display:flex;flex-direction:column;justify-content:center;padding:36px 48px;
   }
-  .services-grid .service-card:nth-child(5):last-child h3{font-size:24px;}
-  .services-grid .service-card:nth-child(5):last-child p{font-size:16px;max-width:520px;}
+  .services-grid .service-card:first-child h3{font-size:24px;}
+  .services-grid .service-card:first-child p{font-size:16px;max-width:520px;}
 }
 
 .service-icon{
