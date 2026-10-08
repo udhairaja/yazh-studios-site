@@ -192,6 +192,11 @@ section{padding:100px 0;}
   transition:transform .4s ease;
 }
 .service-card:hover .service-photo{transform:scale(1.05);}
+@media (min-width:901px){
+  .services-grid{grid-template-columns:repeat(8,1fr);}
+  .services-grid .service-card{grid-column:span 2;}
+  .services-grid .service-card:nth-child(5):last-child{grid-column:4 / span 2;}
+}
 .service-icon{
   width:52px;height:52px;border-radius:14px;
   background:linear-gradient(135deg,rgba(201,154,46,0.20),rgba(201,154,46,0.06));
