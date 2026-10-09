@@ -241,7 +241,7 @@
       function renderSet(){
         var html = '';
         clientLogos.forEach(function(logo){
-          html += '<div class="logo-card"><img src="' + logo.src + '" alt="' + logo.alt + '" class="logo-item" loading="lazy"></div>';
+          html += '<div class="logo-card"><img src="' + logo.src + '" alt="' + logo.alt + '" class="logo-item"></div>';
         });
         return html;
       }
@@ -271,7 +271,7 @@
         influencers.forEach(function(p){
           var handleClean = p.handle.replace('@','');
           html += '<a href="https://www.instagram.com/' + handleClean + '/" target="_blank" rel="noopener" class="influencer-card">' +
-            '<img src="' + p.photo + '" alt="' + p.name + '" class="influencer-photo" loading="lazy">' +
+            '<img src="' + p.photo + '" alt="' + p.name + '" class="influencer-photo">' +
             '<div class="influencer-name">' + p.name + '</div>' +
             '<div class="influencer-handle">' + p.handle + '</div>' +
           '</a>';

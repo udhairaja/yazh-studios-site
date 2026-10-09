@@ -349,6 +349,7 @@ section{padding:100px 0;}
 .logo-track{
   display:flex;align-items:center;gap:26px;width:max-content;
   animation:logo-scroll 46s linear infinite;
+  will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;
 }
 .logo-marquee:hover .logo-track{animation-play-state:paused;}
 .logo-card{
@@ -362,14 +363,15 @@ section{padding:100px 0;}
 }
 .logo-card:hover .logo-item{transform:scale(1.08);}
 @keyframes logo-scroll{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
+  from{transform:translate3d(0,0,0);}
+  to{transform:translate3d(-50%,0,0);}
 }
 @media (prefers-reduced-motion: reduce){
   .logo-track{animation:none;}
 }
 @media (max-width:600px){
-  .logo-card{height:88px;padding:16px 26px;}
+  .logo-marquee{-webkit-mask-image:none;mask-image:none;}
+  .logo-card{height:88px;padding:16px 26px;min-width:110px;}
   .logo-item{height:46px;max-width:150px;}
 }
 .influencer-card{
@@ -595,7 +597,12 @@ footer{
 @media (max-width:600px){
   .services-grid, .why-grid, .process-grid, .team-grid, .testi-grid{grid-template-columns:1fr;}
   .portfolio-grid{grid-template-columns:repeat(2,1fr);}
-  .channels-grid{grid-template-columns:1fr 1fr;}
+  .channels-grid{grid-template-columns:1fr 1fr;gap:14px;}
+  .channel-card{height:324px;}
+  .channel-card-back{padding:16px 12px;}
+  .channel-card-back h4{font-size:14px;margin-bottom:10px;}
+  .channel-card-back p{font-size:12px;line-height:1.5;}
+  .channels-grid .channel-card:last-child:nth-child(odd){grid-column:1 / -1;width:calc(50% - 7px);justify-self:center;}
   .hero{padding:140px 0 70px;}
   .page-banner{padding:120px 0 50px;}
   section{padding:70px 0;}
