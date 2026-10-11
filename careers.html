@@ -167,32 +167,38 @@
   });
 </script>
 <script>
-  // Paste the Google Apps Script Web App URL here to receive applications by email and in a Google Sheet.
-  // Until it is set, the form falls back to opening the visitor's email app addressed to info@yazhstudios.com.
-  var APPLY_ENDPOINT = '';
+  // Applications are emailed to info@yazhstudios.com through FormSubmit (no Google Sheet needed).
+  var APPLY_EMAIL = 'info@yazhstudios.com';
   (function(){
     var form=document.getElementById('applyForm'),btn=document.getElementById('applyBtn'),st=document.getElementById('applyStatus');
+    function mailtoFallback(d){
+      var body=Object.keys(d).map(function(k){return k+': '+d[k];}).join('\n');
+      location.href='mailto:'+APPLY_EMAIL+'?subject='+encodeURIComponent('Job Application - '+d.role+' - '+d.name)+'&body='+encodeURIComponent(body);
+    }
     form.addEventListener('submit',function(e){
       e.preventDefault();
       st.className='apply-status';
       if(form.website.value){return;}
       if(!form.checkValidity()){form.reportValidity();return;}
       var d={};['name','phone','email','role','experience','portfolio','message'].forEach(function(k){d[k]=form[k].value.trim();});
-      if(!APPLY_ENDPOINT){
-        var body=Object.keys(d).map(function(k){return k+': '+d[k];}).join('\n');
-        location.href='mailto:info@yazhstudios.com?subject='+encodeURIComponent('Job Application - '+d.role+' - '+d.name)+'&body='+encodeURIComponent(body);
-        return;
-      }
       btn.disabled=true;btn.textContent='Sending...';
-      d.page=location.href;
-      fetch(APPLY_ENDPOINT,{method:'POST',mode:'no-cors',body:new URLSearchParams(d)})
-        .then(function(){
+      var payload=Object.assign({},d,{_subject:'Job Application - '+d.role+' - '+d.name,_template:'table',_captcha:'false'});
+      fetch('https://formsubmit.co/ajax/'+APPLY_EMAIL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(payload)
+      })
+      .then(function(r){return r.json();})
+      .then(function(j){
+        if(j && (j.success===true||j.success==='true')){
           form.reset();st.textContent='Thank you! Your application has been sent. We will contact you soon.';st.className='apply-status ok';
-        })
-        .catch(function(){
-          st.textContent='Could not send. Please email info@yazhstudios.com or message us on WhatsApp.';st.className='apply-status err';
-        })
-        .finally(function(){btn.disabled=false;btn.textContent='Submit Application';});
+        } else { throw new Error('send failed'); }
+      })
+      .catch(function(){
+        st.textContent='Could not send directly, opening your email app instead.';st.className='apply-status err';
+        mailtoFallback(d);
+      })
+      .finally(function(){btn.disabled=false;btn.textContent='Submit Application';});
     });
   })();
 </script>
