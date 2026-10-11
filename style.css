@@ -681,3 +681,27 @@ body{animation:page-fade-in .6s ease both;}
 
 /* Tilt cards — subtle pointer-following depth (JS sets the transform) */
 .hero-visual, .service-card, .team-card, .testi-card{will-change:transform;}
+
+/* CAREERS APPLY FORM */
+.apply-wrap{display:grid;grid-template-columns:1.6fr 1fr;gap:32px;align-items:start;}
+.apply-form,.apply-side{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:32px;}
+.apply-form h3,.apply-side h3{margin-bottom:20px;}
+.apply-form label{display:block;font-size:14px;font-weight:500;margin-bottom:16px;color:var(--text);}
+.apply-form input,.apply-form select,.apply-form textarea{
+  display:block;width:100%;margin-top:6px;padding:12px 14px;font:inherit;font-size:15px;
+  color:var(--text);background:#fff;border:1px solid var(--border);border-radius:12px;outline:none;
+}
+.apply-form input:focus,.apply-form select:focus,.apply-form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,154,46,0.18);}
+.apply-form textarea{resize:vertical;min-height:120px;}
+.apply-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.apply-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+.apply-status{margin-top:14px;font-size:14px;min-height:20px;}
+.apply-status.ok{color:#1d7a46;}
+.apply-status.err{color:#b3261e;}
+.apply-side ul{list-style:none;padding:0;margin:0 0 20px;}
+.apply-side li{padding:10px 0 10px 26px;position:relative;color:var(--muted);font-size:15px;}
+.apply-side li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;}
+.apply-side p{color:var(--muted);font-size:14.5px;}
+.apply-side a{color:var(--gold);font-weight:600;}
+@media (max-width:900px){.apply-wrap{grid-template-columns:1fr;}}
+@media (max-width:600px){.apply-row{grid-template-columns:1fr;gap:0;}.apply-form,.apply-side{padding:22px;}}
