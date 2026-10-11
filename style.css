@@ -700,6 +700,7 @@ body{animation:page-fade-in .6s ease both;}
 .apply-status.err{color:#b3261e;}
 .apply-side ul{list-style:none;padding:0;margin:0 0 20px;}
 .apply-side li{padding:10px 0 10px 26px;position:relative;color:var(--muted);font-size:15px;}
+.apply-side li strong{display:block;color:var(--text);font-weight:600;}
 .apply-side li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;}
 .apply-side p{color:var(--muted);font-size:14.5px;}
 .apply-side a{color:var(--gold);font-weight:600;}
